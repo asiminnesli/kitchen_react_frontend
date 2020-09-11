@@ -1,4 +1,3 @@
-
 // Main Components
 export Header from './Header/Header';
 export HeaderMenu from './Header/HeaderMenu';
@@ -127,9 +126,16 @@ export AddContact from './Contact/AddContact';
 export ContactList from './Contact/ContactList';
 export ContactDetail from './Contact/ContactDetail';
 // Chat
-export ChatHeader from './Chat/ChatHeader';
-export ChatRoom from './Chat/ChatRoom';
-export StreamApiChat from './Chat/StreamApiChat';
+export Compose from './Chat/Compose';
+export ConversationList from './Chat/ConversationList';
+export ConversationListItem from './Chat/ConversationListItem';
+export ConversationSearch from './Chat/ConversationSearch';
+export Message from './Chat/Message';
+export MessageList from './Chat/MessageList';
+export Messenger from './Chat/Messenger';
+export Toolbar from './Chat/Toolbar';
+export ToolbarButton from './Chat/ToolbarButton';
+
 // Email
 export EmailHeader from './Email/EmailHeader';
 export EmailSidebar from './Email/EmailSidebar';
@@ -147,7 +153,6 @@ export AddBoard from './TaskBoard/AddBoard';
 export ErrorWrap from './Error/ErrorWrap';
 // Theme an Layout Settings
 export TemplateSettings from './TemplateSettings';
-
 
 // our components
 

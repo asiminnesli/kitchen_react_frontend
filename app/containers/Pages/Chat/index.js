@@ -1,46 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import contactData from 'dan-api/apps/contactData';
-import chatData from 'dan-api/apps/chatData';
+
 import { Helmet } from 'react-helmet';
 import brand from 'dan-api/dummy/brand';
-import { ContactList, ChatRoom, StreamApiChat} from 'dan-components';
-import { fetchAction, searchAction } from 'dan-actions/ContactActions';
-import {
-  fetchChatAction,
-  showChatAction,
-  sendAction,
-  hideDetailAction,
-  deleteAction
-} from 'dan-actions/ChatActions';
-import styles from 'dan-components/Contact/contact-jss';
+import Messenger from '../../../components/Chat/Messenger';
+// import {
+//   fetchChatAction,
+//   showChatAction,
+//   sendAction,
+//   hideDetailAction,
+//   deleteAction,
+// } from "dan-actions/ChatActions";
+// import styles from "dan-components/Contact/contact-jss";
 
 class Chat extends React.Component {
-  componentDidMount() {
-    const { fetchChatData, fetchContactData } = this.props;
-    fetchChatData(chatData);
-    fetchContactData(contactData);
-  }
+  // componentDidMount() {
+  //   const { fetchChatData, fetchContactData } = this.props;
+  //   fetchChatData(chatData);
+  //   fetchContactData(contactData);
+  // }
 
   render() {
     const title = brand.name + ' - Chat App';
     const description = brand.desc;
-    const {
-      classes,
-      dataContact,
-      showDetail,
-      hideDetail,
-      keyword,
-      search,
-      dataChat,
-      chatSelected,
-      sendMessage,
-      remove,
-      showMobileDetail
-    } = this.props;
+
     return (
       <div>
         <Helmet>
@@ -51,71 +33,31 @@ class Chat extends React.Component {
           <meta property="twitter:title" content={title} />
           <meta property="twitter:description" content={description} />
         </Helmet>
+
+        {/* <StreamApiChat /> */}
         <div>
-          <StreamApiChat />
-          {/* <ContactList
-            total={dataContact.size}
-            itemSelected={chatSelected}
-            dataContact={dataContact}
-            showDetail={showDetail}
-            search={search}
-            keyword={keyword}
-          />
-          <ChatRoom
-            showMobileDetail={showMobileDetail}
-            dataChat={dataChat}
-            chatSelected={chatSelected}
-            dataContact={dataContact}
-            sendMessage={sendMessage}
-            remove={remove}
-            hideDetail={hideDetail}
-          /> */}
+          <Messenger />
         </div>
+        {/* </div> */}
       </div>
     );
   }
 }
 
-Chat.propTypes = {
-  classes: PropTypes.object.isRequired,
-  fetchContactData: PropTypes.func.isRequired,
-  fetchChatData: PropTypes.func.isRequired,
-  showDetail: PropTypes.func.isRequired,
-  hideDetail: PropTypes.func.isRequired,
-  sendMessage: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
-  keyword: PropTypes.string.isRequired,
-  dataContact: PropTypes.object.isRequired,
-  dataChat: PropTypes.object.isRequired,
-  chatSelected: PropTypes.number.isRequired,
-  showMobileDetail: PropTypes.bool.isRequired,
-};
+// const userToCompany = () => {
+//   return axios({
+//     method: "POST",
+//     headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+//     url: `${config.fetchLinkUrl}users/getRooms`,
+//   })
+//     .then((res) => {
+//       console.log(res);
+//       return res;
+//     })
+//     .catch((error) => {
+//       console.log(error.response.data);
+//       return error;
+//     });
+// };
 
-const reducerContact = 'contact';
-const reducerChat = 'chat';
-const mapStateToProps = state => ({
-  force: state, // force state from reducer
-  dataContact: state.getIn([reducerContact, 'contactList']),
-  dataChat: state.getIn([reducerChat, 'activeChat']),
-  chatSelected: state.getIn([reducerChat, 'chatSelected']),
-  showMobileDetail: state.getIn([reducerChat, 'showMobileDetail']),
-  keyword: state.getIn([reducerContact, 'keywordValue']),
-});
-
-const dispatchToProps = dispatch => ({
-  fetchContactData: bindActionCreators(fetchAction, dispatch),
-  hideDetail: () => dispatch(hideDetailAction),
-  fetchChatData: bindActionCreators(fetchChatAction, dispatch),
-  showDetail: bindActionCreators(showChatAction, dispatch),
-  search: bindActionCreators(searchAction, dispatch),
-  sendMessage: bindActionCreators(sendAction, dispatch),
-  remove: () => dispatch(deleteAction),
-});
-
-const ChatMapped = connect(
-  mapStateToProps,
-  dispatchToProps
-)(Chat);
-
-export default withStyles(styles)(ChatMapped);
+export default Chat;

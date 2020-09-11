@@ -197,6 +197,7 @@
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
     "serve-favicon": "^2.4.5",
+    "shave": "^2.5.9",
     "slick-carousel": "^1.8.1",
     "stream-chat": "^1.13.0",
     "stream-chat-react": "^1.2.5",
