@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import { PropTypes } from "prop-types";
-import classNames from "classnames";
-import Fade from "@material-ui/core/Fade";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import { Header, Sidebar, BreadCrumb } from "dan-components";
-import Decoration from "../Decoration";
-import styles from "../appStyles-jss";
+import React, { Fragment } from 'react';
+import { PropTypes } from 'prop-types';
+import classNames from 'classnames';
+import Fade from '@material-ui/core/Fade';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import { Header, Sidebar, BreadCrumb } from 'dan-components';
+import Decoration from '../Decoration';
+import styles from '../appStyles-jss';
 
 const LeftSidebarLayout = (props) => {
   const {
@@ -27,10 +27,7 @@ const LeftSidebarLayout = (props) => {
     handleOpenGuide,
     dataMenu,
   } = props;
-  let title = dataMenu.filter(function(element) {
-    return element.link === props.history.location.pathname;
-  });
-  console.log(title);
+  const title = dataMenu.filter((element) => element.link === props.history.location.pathname);
   return (
     <Fragment>
       <Header
@@ -55,7 +52,7 @@ const LeftSidebarLayout = (props) => {
       <main
         className={classNames(
           classes.content,
-          !sidebarOpen ? classes.contentPaddingLeft : ""
+          !sidebarOpen ? classes.contentPaddingLeft : ''
         )}
         id="mainContent"
       >
@@ -73,22 +70,22 @@ const LeftSidebarLayout = (props) => {
           <Typography
             component="h4"
             className={
-              bgPosition === "header" ? classes.darkTitle : classes.lightTitle
+              bgPosition === 'header' ? classes.darkTitle : classes.lightTitle
             }
             variant="h4"
             style={{
-              marginTop: "-70px",
-              marginBottom: "140px",
-              marginLeft: "20px",
+              marginTop: '-70px',
+              marginBottom: '140px',
+              marginLeft: '20px',
             }}
           >
-            {title[0]?title[0].name:<br />}
+            {title[0] ? title[0].name : <br />}
           </Typography>
           {titleException.indexOf(history.location.pathname) < 0 && (
             <div className={classes.pageTitle}>
               <BreadCrumb
                 separator=" / "
-                theme={bgPosition === "header" ? "dark" : "light"}
+                theme={bgPosition === 'header' ? 'dark' : 'light'}
                 location={history.location}
               />
             </div>
@@ -106,7 +103,7 @@ const LeftSidebarLayout = (props) => {
             unmountOnExit
             {...(pageLoaded ? { timeout: 700 } : {})}
           >
-            <div className={!pageLoaded ? classes.hideApp : ""}>
+            <div className={!pageLoaded ? classes.hideApp : ''}>
               {/* Application content will load here */}
               {children}
             </div>

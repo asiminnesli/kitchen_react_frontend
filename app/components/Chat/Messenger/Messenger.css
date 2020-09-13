@@ -37,3 +37,18 @@
   grid-column-start: 5;
   background: white;
 }
+
+.h4-center {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.compose {
+  border: none;
+  background-color: #f4f4f8;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 50%;
+}

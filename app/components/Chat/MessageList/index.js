@@ -1,105 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import Compose from '../Compose';
-import Toolbar from '../Toolbar';
-import ToolbarButton from '../ToolbarButton';
-import Message from '../Message';
+import React from "react";
+import moment from "moment";
+import PropTypes from "prop-types";
+import Compose from "../Compose";
+import Toolbar from "../Toolbar";
+import ToolbarButton from "../ToolbarButton";
+import Message from "../Message";
 
-import './MessageList.css';
+import "./MessageList.css";
 
-const MY_USER_ID = 'apple';
+const MY_USER_ID = "me";
 
-export default function MessageList() {
-  const [messages, setMessages] = useState([]);
-
-  const getMessages = () => {
-    const tempMessages = [
-      {
-        id: 1,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 2,
-        author: 'orange',
-        message:
-          'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 3,
-        author: 'orange',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 4,
-        author: 'apple',
-        message:
-          'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 5,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 6,
-        author: 'apple',
-        message:
-          'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 7,
-        author: 'orange',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 8,
-        author: 'orange',
-        message:
-          'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 9,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime(),
-      },
-      {
-        id: 10,
-        author: 'orange',
-        message:
-          'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime(),
-      },
-    ];
-    setMessages([...messages, ...tempMessages]);
-  };
-  useEffect(() => {
-    getMessages();
-  }, []);
-
+export default function MessageList({ chatMessages, setChatMessages, roomId }) {
   const renderMessages = () => {
     let i = 0;
-    const messageCount = messages.length;
+    const messageCount = chatMessages.length;
     const tempMessages = [];
 
     while (i < messageCount) {
-      const previous = messages[i - 1];
-      const current = messages[i];
-      const next = messages[i + 1];
+      const previous = chatMessages[i - 1];
+      const current = chatMessages[i];
+      const next = chatMessages[i + 1];
       const isMine = current.author === MY_USER_ID;
       const currentMoment = moment(current.timestamp);
       let prevBySameAuthor = false;
@@ -115,11 +35,11 @@ export default function MessageList() {
         );
         prevBySameAuthor = previous.author === current.author;
 
-        if (prevBySameAuthor && previousDuration.as('hours') < 1) {
+        if (prevBySameAuthor && previousDuration.as("hours") < 1) {
           startsSequence = false;
         }
 
-        if (previousDuration.as('hours') < 1) {
+        if (previousDuration.as("hours") < 1) {
           showTimestamp = false;
         }
       }
@@ -129,7 +49,7 @@ export default function MessageList() {
         const nextDuration = moment.duration(nextMoment.diff(currentMoment));
         nextBySameAuthor = next.author === current.author;
 
-        if (nextBySameAuthor && nextDuration.as('hours') < 1) {
+        if (nextBySameAuthor && nextDuration.as("hours") < 1) {
           endsSequence = false;
         }
       }
@@ -155,7 +75,7 @@ export default function MessageList() {
   return (
     <div className="message-list">
       <Toolbar
-        title="Conversation Title"
+        title=""
         rightItems={[
           <ToolbarButton
             key="info"
@@ -166,9 +86,14 @@ export default function MessageList() {
         ]}
       />
 
-      <div className="message-list-container">{renderMessages()}</div>
+      <div className="message-list-container">
+        {chatMessages && renderMessages()}
+      </div>
 
       <Compose
+        roomId={roomId}
+        chatMessages={chatMessages}
+        setChatMessages={setChatMessages}
         rightItems={[
           <ToolbarButton key="photo" icon="ion-ios-camera" />,
           <ToolbarButton key="image" icon="ion-ios-image" />,
@@ -181,3 +106,9 @@ export default function MessageList() {
     </div>
   );
 }
+
+MessageList.propTypes = {
+  chatMessages: PropTypes.array,
+  setChatMessages: PropTypes.func,
+  roomId: PropTypes.number,
+};

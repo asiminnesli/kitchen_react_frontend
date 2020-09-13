@@ -1,26 +1,24 @@
-import React, { useEffect } from 'react';
-import shave from 'shave';
-import PropTypes from 'prop-types';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useEffect } from "react";
+import shave from "shave";
+import "./ConversationListItem.css";
 
-import './ConversationListItem.css';
-
-export default function ConversationListItem({ data }) {
+export default function ConversationListItem({ handleClickRoom, data }) {
+  const { photo, name, roomId } = data;
   useEffect(() => {
-    shave('.conversation-snippet', 20);
+    shave(".conversation-snippet", 20);
   });
 
-  const { photo, name, text } = data;
-
   return (
-    <div className="conversation-list-item">
+    <div
+      className="conversation-list-item"
+      onClick={() => handleClickRoom(roomId)}
+    >
       <img className="conversation-photo" src={photo} alt="conversation" />
       <div className="conversation-info">
         <h1 className="conversation-title">{name}</h1>
-        <p className="conversation-snippet">{text}</p>
       </div>
     </div>
   );
 }
-ConversationListItem.propTypes = {
-  data: PropTypes.node.isRequired,
-};
