@@ -8,6 +8,7 @@ const rawicons = require('./rawicons');
 const rawdocs = require('./rawdocs');
 const argv = require('./argv');
 const port = require('./port');
+const cors = require('cors');
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
@@ -15,7 +16,7 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
   : false;
 const { resolve } = require('path');
 const app = express();
-
+app.use(cors());
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 // Load material icons
