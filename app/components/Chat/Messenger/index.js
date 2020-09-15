@@ -18,7 +18,7 @@ export default function Messenger() {
     const pluralUserType = pluralUserTypeBuilder(userType);
     axios({
       method: 'POST',
-      url: `https://feestvanverbinding.nl/api/${pluralUserType}/messages`,
+      url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/messages`,
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       data: {
         room_id: selectedRoomId,
