@@ -16,7 +16,7 @@ export default function Message({
   const handleDownloadFile = useCallback(() => {
     axios({
       method: 'POST',
-      url: 'http://api.keukenvergelijking.nl/download',
+      url: 'http://portal.keukenvergelijking.nl/api/download',
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
       data: {
         file: 'messagesFiles/' + data.message,

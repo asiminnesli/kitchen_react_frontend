@@ -19,7 +19,7 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
       const pluralUserType = pluralUserTypeBuilder(userType);
       axios({
         method: 'POST',
-        url: `http://api.keukenvergelijking.nl/${pluralUserType}/sendMessage`,
+        url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/sendMessage`,
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
         data: {
           room_id: roomId,
@@ -69,7 +69,7 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
       const pluralUserType = pluralUserTypeBuilder(userType);
       axios({
         method: 'POST',
-        url: `http://api.keukenvergelijking.nl/${pluralUserType}/sendFileViaMessage`,
+        url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/sendFileViaMessage`,
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
         data: formData,
       })
