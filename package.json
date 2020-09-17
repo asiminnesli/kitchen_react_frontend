@@ -121,6 +121,7 @@
     "classnames": "^2.2.6",
     "compression": "1.7.4",
     "connected-react-router": "6.6.1",
+    "cors": "^2.8.5",
     "cross-env": "5.2.0",
     "date-fns": "2.1.0",
     "detect-browser": "^4.0.0",
