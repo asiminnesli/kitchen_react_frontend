@@ -1,13 +1,12 @@
-import React, {
-  useCallback, useState, useRef, useEffect
-} from 'react';
-import './Compose.css';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
-import IconButton from '@material-ui/core/IconButton';
-import pluralUserTypeBuilder from '../../../utils/pluralUserTypeBuilder';
+import React, { useCallback, useState, useRef, useEffect } from "react";
+import "./Compose.css";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
+import IconButton from "@material-ui/core/IconButton";
+import pluralUserTypeBuilder from "../../../utils/pluralUserTypeBuilder";
+import config from "../../../actions/config";
 
 export default function Compose({ roomId, chatMessages, setChatMessages }) {
   const [message, setMessage] = useState();
@@ -15,12 +14,12 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
   const [userType, setUserType] = useState();
 
   const handleSendMessage = useCallback(() => {
-    if (message && userType !== 'admin') {
+    if (message && userType !== "admin") {
       const pluralUserType = pluralUserTypeBuilder(userType);
       axios({
-        method: 'POST',
-        url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/sendMessage`,
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+        method: "POST",
+        url: `${config.fetchLinkUrl}${pluralUserType}/sendMessage`,
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         data: {
           room_id: roomId,
           message,
@@ -33,13 +32,13 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
               ...chatMessages,
               {
                 message,
-                author: 'me',
+                author: "me",
                 date: new Date().getTime(),
                 isRead: false,
-                type: 'text',
+                type: "text",
               },
             ]);
-            inputRef.current.value = '';
+            inputRef.current.value = "";
           }
         })
         .catch((error) => {
@@ -49,7 +48,7 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
   }, [roomId, message, inputRef]);
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('user'));
+    const userInfo = JSON.parse(localStorage.getItem("user"));
     setUserType(userInfo.type);
     console.log(userInfo);
   }, []);
@@ -61,16 +60,16 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
       const formData = new FormData();
 
       // Update the formData object
-      formData.append('file', selectedFile, selectedFile.name);
-      formData.append('room_id', roomId);
+      formData.append("file", selectedFile, selectedFile.name);
+      formData.append("room_id", roomId);
 
       // Request made to the backend api
       // Send formData object
       const pluralUserType = pluralUserTypeBuilder(userType);
       axios({
-        method: 'POST',
-        url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/sendFileViaMessage`,
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+        method: "POST",
+        url: `${config.fetchLinkUrl}${pluralUserType}/sendFileViaMessage`,
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         data: formData,
       })
         .then((res) => {
@@ -86,21 +85,21 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
   return (
     <div className="compose">
       <input
-        disabled={userType === 'admin'}
+        disabled={userType === "admin"}
         ref={inputRef}
         type="text"
         className="compose-input"
         placeholder="Type a message, @name"
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === "Enter") {
             handleSendMessage();
           }
         }}
       />
 
       <Button
-        disabled={userType === 'admin'}
+        disabled={userType === "admin"}
         size="small"
         variant="outlined"
         color="secondary"
@@ -119,7 +118,7 @@ export default function Compose({ roomId, chatMessages, setChatMessages }) {
         </IconButton>
         <input
           id="icon-button-file"
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
           type="file"
           onChange={handleFileUpload}
         />

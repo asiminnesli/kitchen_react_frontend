@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
-import ConversationList from '../ConversationList';
-import MessageList from '../MessageList';
-import './Messenger.css';
-import pluralUserTypeBuilder from '../../../utils/pluralUserTypeBuilder';
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import ConversationList from "../ConversationList";
+import MessageList from "../MessageList";
+import "./Messenger.css";
+import pluralUserTypeBuilder from "../../../utils/pluralUserTypeBuilder";
+import config from "../../../actions/config";
 
 export default function Messenger() {
   const [selectedRoomId, setSelectedRoomId] = useState();
@@ -17,9 +18,9 @@ export default function Messenger() {
   const getConversations = () => {
     const pluralUserType = pluralUserTypeBuilder(userType);
     axios({
-      method: 'POST',
-      url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/messages`,
-      headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+      method: "POST",
+      url: `${config.fetchLinkUrl}${pluralUserType}/messages`,
+      headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       data: {
         room_id: selectedRoomId,
       },
@@ -42,7 +43,7 @@ export default function Messenger() {
   };
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('user'));
+    const userInfo = JSON.parse(localStorage.getItem("user"));
     setUserType(userInfo.type);
   }, []);
 
