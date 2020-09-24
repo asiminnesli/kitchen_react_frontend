@@ -17,7 +17,7 @@ export default function ConversationList({ handleClickRoom }) {
     const placeholderImagePath = '/images/avatars/pp_boy.svg';
     axios({
       method: 'POST',
-      url: `http://portal.keukenvergelijking.nl/api/${pluralUserType}/getRooms`,
+      url: `https://portal.keukenvergelijking.nl/api/${pluralUserType}/getRooms`,
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
     })
       .then((res) => {
