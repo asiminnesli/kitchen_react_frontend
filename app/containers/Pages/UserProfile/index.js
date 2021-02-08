@@ -243,7 +243,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="Hans"
+                // placeholder="Hans"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -262,7 +262,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="Superkeukens"
+                // placeholder="Superkeukens"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -280,7 +280,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="Romorkstraat"
+                // placeholder="Romorkstraat"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -298,7 +298,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="1"
+                // placeholder="1"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -316,7 +316,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="+31621816448"
+                // placeholder="+31621816448"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -334,7 +334,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="1034 LE"
+                // placeholder="1034 LE"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -353,7 +353,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="Amsterdam"
+                // placeholder="Amsterdam"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -372,7 +372,7 @@ const UserProfile = (props) => {
               </Typography>
               <TextField
                 id="outlined-full-width"
-                placeholder="Nederland"
+                // placeholder="Nederland"
                 fullWidth
                 margin="normal"
                 variant="outlined"
@@ -391,7 +391,7 @@ const UserProfile = (props) => {
               <TextField
                 type="date"
                 id="outlined-full-width"
-                placeholder="Birthday"
+                // placeholder="Birthday"
                 fullWidth
                 margin="normal"
                 variant="outlined"

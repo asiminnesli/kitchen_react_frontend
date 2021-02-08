@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 
 import { Link } from "react-router-dom";
 import css2 from "./index.scss";
-import { userOffers } from "../../../data/data"
+import { userOffers } from "../../../data/data";
 
 const styles = (theme) => ({
   table: {
@@ -114,14 +114,21 @@ const OffersListKlantTable = (props) => {
       }
       console.log("I am here", res);
       let data_array = [];
-      res.data.map(element => {
+      res.data.map((element) => {
         let reactions = [];
-        if(element.status === "concept") reactions = [33, 2];
-        else if(element.status === "active") reactions = [90, 2];
-        else if(element.status === "done") reactions = [100, 2];
-        let raw_array = [element.type, element.name, element.createdAt.split("T")[0], reactions, element.status, element.id];
+        if (element.status === "concept") reactions = [33, 2];
+        else if (element.status === "active") reactions = [90, 2];
+        else if (element.status === "done") reactions = [100, 2];
+        let raw_array = [
+          element.type,
+          element.name,
+          element.createdAt.split("T")[0],
+          reactions,
+          element.status,
+          element.id,
+        ];
         data_array.push(raw_array);
-      })
+      });
       setTableData(data_array);
     });
   }, []);
@@ -142,10 +149,13 @@ const OffersListKlantTable = (props) => {
   };
 
   const renderStatus = (status) => {
-    let name = status + "Button";
+    let label = "";
+    if (status === "active") label = "actief";
+    else label = status;
+    let name = label + "Button";
     return (
       <Button variant="contained" color="" className={css[name]}>
-        {status.toUpperCase()}
+        {label.toUpperCase()}
       </Button>
     );
   };

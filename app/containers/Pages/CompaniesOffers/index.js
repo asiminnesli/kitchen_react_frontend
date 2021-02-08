@@ -37,8 +37,8 @@ const CompaniesOffers = (props) => {
       </Helmet>
       <BlankPage desc="Some text description">
         <Tabs value={tabStatus} onChange={handleChange}>
-          <Tab label="NIEUW" />
-          <Tab label="MIJN OFFERTES" />
+          <Tab label="NIEUWE OFFERTE" />
+          <Tab label="MIJN OFFERTE" />
           <Tab label="GEREAGEERD" />
           <Tab label="AFGEHANDELD" />
         </Tabs>

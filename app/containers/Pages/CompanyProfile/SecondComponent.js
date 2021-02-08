@@ -65,7 +65,7 @@ const SecondComponent = (props) => {
           </Typography>
           <TextField
             id="outlined-full-width"
-            placeholder="Superkeukens"
+            // placeholder="Superkeukens"
             fullWidth
             margin="normal"
             variant="outlined"
@@ -83,7 +83,7 @@ const SecondComponent = (props) => {
           </Typography>
           <TextField
             id="outlined-full-width"
-            placeholder="Superkeukens"
+            // placeholder="Superkeukens"
             fullWidth
             margin="normal"
             variant="outlined"
@@ -102,7 +102,7 @@ const SecondComponent = (props) => {
           </Typography>
           <TextField
             id="outlined-multiline-static"
-            placeholder="Typ hier over uw bedrijf"
+            // placeholder="Typ hier over uw bedrijf"
             fullWidth
             style={{ height: "230px" }}
             margin="normal"
@@ -123,9 +123,9 @@ const SecondComponent = (props) => {
           </Typography>
           <TextField
             id="outlined-multiline-static"
-            placeholder="Maandag t/m Vrijdag 12:00 - 18:00
-                            \nZaterdag 12:00 - 17:00
-                            \nZondag gesloten!"
+            // placeholder="Maandag t/m Vrijdag 12:00 - 18:00
+            //                 \nZaterdag 12:00 - 17:00
+            //                 \nZondag gesloten!"
             fullWidth
             margin="normal"
             variant="outlined"
@@ -142,7 +142,7 @@ const SecondComponent = (props) => {
           </Typography>
           <TextField
             id="outlined-multiline-static"
-            placeholder="Superkeukens"
+            // placeholder="Superkeukens"
             fullWidth
             rows={9}
             margin="normal"

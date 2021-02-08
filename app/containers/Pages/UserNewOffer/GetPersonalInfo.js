@@ -208,7 +208,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="Uw naam en achternaam"
+                  // placeholder="Uw naam en achternaam"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -231,7 +231,7 @@ class GetPersonalInfo extends Component {
                 <TextField
                   id="outlined-full-width"
                   style={{ margin: 8 }}
-                  placeholder="Uw e-mail adres"
+                  // placeholder="Uw e-mail adres"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -280,7 +280,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="Bramzeiil 145"
+                  // placeholder="Bramzeiil 145"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -301,7 +301,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="1034 LE"
+                  // placeholder="1034 LE"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -322,7 +322,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="Amsterdam"
+                  // placeholder="Amsterdam"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -343,7 +343,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="Nederland"
+                  // placeholder="Nederland"
                   fullWidth
                   margin="normal"
                   variant="outlined"
@@ -364,7 +364,7 @@ class GetPersonalInfo extends Component {
                 </Typography>
                 <TextField
                   id="outlined-full-width"
-                  placeholder="+31621816448"
+                  // placeholder="+31621816448"
                   fullWidth
                   margin="normal"
                   variant="outlined"

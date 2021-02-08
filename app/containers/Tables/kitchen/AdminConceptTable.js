@@ -96,11 +96,9 @@ const AdminConceptTable = (props) => {
       let table_data = [];
       res.concept.map((element) => {
         let row_data = [
-          element.type,
           element.createdAt.split("T")[0],
-          element.profile ? element.profile.email : "",
           element.city,
-          element.answer_one,
+          element.profile ? element.profile.email : "",
           {
             old_files: element.old_files,
             id: element.id,
@@ -114,20 +112,7 @@ const AdminConceptTable = (props) => {
   }, [open, modalOpen]);
   const columns = [
     {
-      name: "Offerte type",
-      options: {
-        filter: true,
-        customBodyRender: (value) => renderType(value),
-      },
-    },
-    {
       name: "Datum",
-      options: {
-        filter: true,
-      },
-    },
-    {
-      name: "Gebruiker",
       options: {
         filter: true,
       },
@@ -139,7 +124,7 @@ const AdminConceptTable = (props) => {
       },
     },
     {
-      name: "Termijn",
+      name: "Gebruiker",
       options: {
         filter: true,
       },
@@ -156,7 +141,7 @@ const AdminConceptTable = (props) => {
       },
     },
     {
-      name: "",
+      name: "Publiceren",
       options: {
         filter: false,
         customBodyRender: (value) => renderLink(value),

@@ -56,7 +56,7 @@ const CompanyNiewOffersTable = (props) => {
       let table_data = [];
       res.data.new.map((element) => {
         let row_data = [
-          element.type,
+          // element.type,
           element.createdAt.split("T")[0],
           element.city,
           "",
@@ -95,12 +95,12 @@ const CompanyNiewOffersTable = (props) => {
   };
 
   const columns = [
-    {
-      name: "Offerte type",
-      options: {
-        filter: true,
-      },
-    },
+    // {
+    //   name: "Offerte type",
+    //   options: {
+    //     filter: true,
+    //   },
+    // },
     {
       name: "Datum",
       options: {
